@@ -1,0 +1,7 @@
+{
+    "cuda": [
+        0
+    ],
+    "global_lock": 1,
+    "num_workers": 8
+}
