@@ -53,7 +53,7 @@ total_loss = task_loss(pred, gt) + latent.loss
 total_loss.backward()
 ```
 
-# Reprodibility
+# Reproducibility
 
 We included reproducible code for the main experiments including:
 
