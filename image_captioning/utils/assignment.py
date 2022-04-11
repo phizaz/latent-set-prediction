@@ -106,7 +106,6 @@ def batch_hungarian_gcr(
     """
     Args:
         gc_mode: 'none', 'gc', 'gcr'
-        map_extra: should we also map the unmatched to the closest?
     """
     class Fn(torch.autograd.Function):
         """reject the gradinet direction that are not decreasing the distance."""
