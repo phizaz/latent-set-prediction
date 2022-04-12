@@ -1,6 +1,6 @@
 # Official implementation of Set Prediction in the Latent Space (LSP)
 
-A NeurIPS2021 paper:
+A NeurIPS2021 paper ([paper](https://openreview.net/forum?id=1ANcwXQuijU), [presentation video](https://slideslive.com/38969041)):
 
 ```
 @inproceedings{NEURIPS2021_d61e9e58,
