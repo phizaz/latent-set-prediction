@@ -9,7 +9,7 @@ from torch import Tensor, nn
 
 
 @dataclass
-class LatentLossReturn:
+class LSPReturn:
     # ordered set elements (by hungarian with the ground truths)
     S_pi: Tensor
     # ordering index (S[S_i] == S_pi)
@@ -58,7 +58,7 @@ class LSPLoss:
 
         loss = self.w_loss_sg * loss_sg + self.w_loss_gs * loss_gs
 
-        return LatentLossReturn(
+        return LSPReturn(
             S_pi=S_pi,
             S_i=S_i,
             loss=loss,
