@@ -21,6 +21,10 @@ A NeurIPS2021 paper:
 Ready to use LSP (latent set prediction) code is available in `lsp.py`.
 It's self-contained and annotated with comments using the convention from the published paper.
 
+You can see a simplified example (with synthetic data) in `try.ipynb`.
+
+## Example use
+
 ```
 from lsp import LSPLoss
 
