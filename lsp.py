@@ -40,19 +40,18 @@ class LSPLoss:
         self.w_loss_sg = w_loss_sg
         self.d = d
 
-    def forward(self, S, len_S, G, len_G):
+    def forward(self, G, len_G, S, len_S):
         """
         Args:
-            S: (n, c) n = total elements in a batch
-            len_S: (n, ) specify the cardinality of each set in a batch
             G: (n, c) n = total elements in a batch (must be of the same size as S)
             len_G: (n, ) specify the cardinality of each set in a batch
+            S: (n, c) n = total elements in a batch
+            len_S: (n, ) specify the cardinality of each set in a batch
         """
         func = batch_lsp(gcr_mode=self.gcr_mode, d=self.d)
-        S_pi, S, G, S_i = func(S, len_S, G, len_G)
-        # R => B must not push gradient to B
-        loss_sg = F.mse_loss(G[S_i], S.detach(), reduction='none')
-        loss_gs = F.mse_loss(S, S_pi.detach(), reduction='none')
+        S_pi, G, S, S_i = func(G, len_G, S, len_S)
+        loss_sg = F.mse_loss(S[S_i], G.detach(), reduction='none')
+        loss_gs = F.mse_loss(G, S_pi.detach(), reduction='none')
         loss_sg = loss_sg.mean()
         loss_gs = loss_gs.mean()
 
@@ -68,8 +67,8 @@ class LSPLoss:
 
 
 def batch_lsp(
-    gcr_mode: str = 'gcr',
-    d: float = 0,
+    gcr_mode: str,
+    d: float,
 ):
     """
     Args:
